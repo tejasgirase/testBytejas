@@ -17,6 +17,7 @@
     "express-session": "^1.14.0",
     "jsonwebtoken": "^7.1.7",
     "mongodb": "^2.2.5",
-    "q": "^1.4.1"
+    "nodemailer": "^4.6.4",
+    "q": "^1.5.1"
   }
 }

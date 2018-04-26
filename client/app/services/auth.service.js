@@ -11,7 +11,8 @@
         var service = {
             login: login,
             getToken: getToken,
-            logout: logout
+            logout: logout,
+            forgotPassword:forgotPassword
         };
         return service;
 
@@ -28,6 +29,11 @@
         function logout()
         {
             return $http.get(host+"/api/account/logout");
+        }
+
+        function forgotPassword(loginCredentials)
+        {
+            return $http.post(host+"/api/account/forgotPassword", loginCredentials);
         }
     }
 })();

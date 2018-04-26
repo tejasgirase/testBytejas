@@ -13,7 +13,7 @@ app.use('/', express.static('../client/app'));
 app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 
 // Use JWT auth to secure the api
-app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/account/authenticate', '/api/account/getToken'] }));
+app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/account/authenticate', '/api/account/getToken','/api/account/forgotPassword'] }));
 
 app.use('/api/account', require('./controllers/account.controller'));
 app.use('/api/dashboard', require('./controllers/dashboard.controller'));

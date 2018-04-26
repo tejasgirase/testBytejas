@@ -1,18 +1,25 @@
 ﻿<div class="container" ng-controller="LoginController as vm">
     <div class="row">        
             <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" ng-model="vm.loginCredentials.username" />
+                <label>Email</label>
+                <input type="email" class="form-control" ng-model="vm.loginCredentials.email" />
+                <span ng-if="vm.forgetPasswordEmailErr" style="color:red;">Please Enter Your Email</span>
             </div>
 
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" class="form-control" ng-model="vm.loginCredentials.password" />
+                <span ng-if="vm.showErrorMsg" style="color:red;">{{vm.msgErr}}</span>
+                <span ng-if="vm.showSuccessMsg" style="color:red;">{{vm.msg}}</span>
             </div>
 
-            <div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary"
                 ng-click="vm.login()">Login</button>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary"
+                ng-click="vm.forgotPassword()">Forgot Password</button>
             </div>
     </div>    
 </div>

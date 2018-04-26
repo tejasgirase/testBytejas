@@ -6,17 +6,39 @@ var authService = require('../services/auth.service');
 router.post('/authenticate', authenticateUser);
 router.get('/getToken', getToken);
 router.get('/logout', logout);
+router.post('/forgotPassword', forgotPassword);
 
 module.exports = router;
 
 function authenticateUser(req, res) {
-    authService.authenticate(req.body.username, req.body.password).then(function (token) {
+    authService.authenticate(req.body.email, req.body.password).then(function (token) {
         if (token) {
             // Save JWT token in the session to make it available to the angular app
             req.session.token = token;            
 
             // Authentication successful
             res.send({ token: token });
+        }
+        else {
+            // Authentication failed
+            // res.sendStatus(401);
+            res.send('Entered username and/or password is wrong. Please try again.');
+        }
+    })
+    .catch(function (err) {
+        res.status(400).send(err);
+    });
+}
+
+function forgotPassword(req, res) {
+    console.log(req.body.email);
+    authService.forgotPassword(req.body.email).then(function (token) {
+        if (token) {
+            // Save JWT token in the session to make it available to the angular app
+            
+
+            // Authentication successful
+            res.send({ data: token });
         }
         else {
             // Authentication failed
