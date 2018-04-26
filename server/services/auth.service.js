@@ -1,6 +1,6 @@
 ﻿var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://localhost:27017/mean-stack';
+var url = 'mongodb://localhost:27017/meanStack';
 var Q = require('q');
 var jwt = require('jsonwebtoken');
 var config = require('../config.json');

@@ -8,7 +8,7 @@ var expressJwt = require('express-jwt');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', express.static('../client'));
+app.use('/', express.static('../client/app'));
 
 app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 

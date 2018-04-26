@@ -8,8 +8,8 @@
     function LoginController(authService, $state, $http) {
         var vm = this;
         vm.loginCredentials = {
-            "username": "rakesh",
-            "password": "rakesh"
+            "username": "tejas",
+            "password": "tejas"
         };
         vm.login = login;
         vm.showErrorMsg = false;
