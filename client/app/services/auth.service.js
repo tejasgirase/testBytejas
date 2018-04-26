@@ -4,7 +4,9 @@
     .factory('authService', authService);
 
     authService.$inject = ['$http'];
-
+    const host = "http://ec2-52-15-164-178.us-east-2.compute.amazonaws.com:3000";
+    // const host = "http://localhost:3000";
+    
     function authService($http) {
         var service = {
             login: login,
@@ -15,17 +17,17 @@
 
         function login(loginCredentials)
         {
-            return $http.post("http://localhost:3000/api/account/authenticate", loginCredentials);
+            return $http.post(host+"/api/account/authenticate", loginCredentials);
         }
 
         function getToken()
         {
-            return $http.get("http://localhost:3000/api/account/getToken");
+            return $http.get(host+"/api/account/getToken");
         }
 
         function logout()
         {
-            return $http.get("http://localhost:3000/api/account/logout");
+            return $http.get(host+"/api/account/logout");
         }
     }
 })();
