@@ -1,6 +1,8 @@
-﻿var express = require('express');
+﻿
+var express = require('express');
 var router = express.Router();
 var authService = require('../services/auth.service');
+var mailSerice = require('../services/mail.service');
 
 // Routes
 router.post('/authenticate', authenticateUser);
@@ -36,14 +38,23 @@ function forgotPassword(req, res) {
         if (token) {
             // Save JWT token in the session to make it available to the angular app
             
-
             // Authentication successful
-            res.send({ data: token });
+            mailSerice.sendForgotPasswordUser(token).then(function(emailResp){
+                if(emailResp) {
+                    console.log(emailResp)
+                    res.send({ data: emailResp});
+                }
+                else {
+                    res.send('Email not sent. Please try again.');
+                }
+            }).catch(function(){
+                res.status(400).send(err);        
+            });
         }
         else {
             // Authentication failed
             // res.sendStatus(401);
-            res.send('Entered username and/or password is wrong. Please try again.');
+            res.send('Entered Email is wrong. Please try again.');
         }
     })
     .catch(function (err) {

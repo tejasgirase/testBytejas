@@ -83,9 +83,9 @@ function forgotPassword(Email) {
                         if(user){
                             var newPasswordObj = {
                                 "newPassword":randomPassword,
-                                "changePasswordHasToBeShown":true
+                                "changePasswordHasToBeShown":true,
+                                "email":Email
                             };
-                            // var send = mailSerice.sendForgotPasswordUser(newPasswordObj);
                             deferred.resolve(newPasswordObj);
                         }else{
                             deferred.resolve(false);
