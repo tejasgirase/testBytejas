@@ -45,7 +45,7 @@ function authenticate(Email, Password) {
                     if(user){
                         deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
                     }else{
-                        deferred.resolve();
+                        deferred.resolve(false);
                     }
                 });
                 
@@ -87,12 +87,14 @@ function forgotPassword(Email) {
                             };
                             // var send = mailSerice.sendForgotPasswordUser(newPasswordObj);
                             deferred.resolve(newPasswordObj);
+                        }else{
+                            deferred.resolve(false);
                         }
                     });
             }
             else {
                 // Authentication failed
-                deferred.resolve();
+                deferred.reject(false);
             }
         });
     });
